@@ -2,12 +2,33 @@ from tkinter import *
 
 
 def button_press(num):
-    pass
+    global equation_text
+    equation_text = equation_text + str(num)
+    equation_label.set(equation_text)
+
 
 def equals():
-    pass
+    global equation_text
+
+    try:
+        total = str(eval(equation_text))
+
+        equation_label.set(total)
+        equation_text = total
+
+    except ZeroDivisionError:
+        equation_label.set('arithemtic error')
+        equation_text = ''
+    except SyntaxError:
+        equation_label.set('synax error')
+        equation_text = ''
+
+
 def clear():
-    pass
+    global equation_text
+    equation_label.set('')
+    equation_text = ''
+
 
 
 window = Tk()
